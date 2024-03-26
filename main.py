@@ -3,16 +3,10 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import time
-import matplotlib.pyplot as plt
-import geopandas as gpd
 
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
-from moviepy.editor import VideoFileClip, TextClip
 import cv2
-from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
-import matplotlib.pyplot as plt
-from shapely.geometry import Polygon
 import GPXClass
 import GPXUtil
 

@@ -7,13 +7,22 @@ import GPXUtil
 class GPXClass:
     def __init__(self, GPX_file_path):
         self.GPX_file_path = GPX_file_path
-        self.gpx_info = GPXUtil.GPXUtils.extract_gpx_info(GPX_file_path)
-        self.datapoint_interval = GPXUtil.GPXUtils.extract_gpx_data_interval(GPX_file_path)
-        self.datapoints = GPXUtil.GPXUtils.gpx_datapoint_to_list(GPX_file_path)
+
+        # general gpx variables
+        self.gpx_info = GPXUtil.GPXUtils.extract_gpx_info(GPX_file_path) # this is the general information of the gpx file
+        self.datapoint_interval = GPXUtil.GPXUtils.extract_gpx_data_interval(GPX_file_path) # this is the interval between each datapoint
+        self.datapoints = GPXUtil.GPXUtils.gpx_datapoint_to_list(GPX_file_path) # this is the list of all the datapoints in the gpx file
+
+
+        # waypoint variables
         self.latarray = self.gpx_lat_to_list()
         self.lonarray = self.gpx_lon_to_list()
         self.mapped_gpx_path_point_on_scale_long, self.mapped_gpx_path_point_on_scale_lat = self.gpx_to_lat_lon_zero_to_one_mapping()
+        # this is two array of lat and lon that represent the gpx path point on the scale of 0 to 1 ( 0,0 is the top left corner and 1,1 is the bottom right corner
         self.mapped_gpx_path_point_on_scale = list(zip(self.mapped_gpx_path_point_on_scale_long, self.mapped_gpx_path_point_on_scale_lat))
+        # this is a merged list of lat and lon that represent the gpx path point on the scale of 0 to 1 ( 0,0 is the top left corner and 1,1 is the bottom right corner
+
+        # elevation variables
         self.elevation = self.gpx_elevation_to_list()
 
     def gpx_elevation_to_list(self):
