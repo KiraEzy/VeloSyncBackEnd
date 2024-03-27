@@ -11,7 +11,7 @@ class Canvas:
         self.gpx_object = GPXClass(gpx_path)
         self.style = StyleWidget.Style(style_path)
         self.video = video_path
-        self.widget_list = styleFileToWidgetList(self.style)
+        self.widget_list = self.style.styleFileToWidgetList()
     def render(self):
 
         return self.video
