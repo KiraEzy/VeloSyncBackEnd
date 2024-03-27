@@ -7,10 +7,11 @@ import time
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
 import cv2
+
+import CanvasClass
 import GPXClass
 import GPXUtil
 
-video_path = './Video/testing_video.mp4'
 
 output_path = './Output/output_video.mp4'
 
@@ -58,7 +59,10 @@ def drawElevationGraph(draw, elevationTextMax, elevationTextMin, elevationFont, 
     draw.ellipse(xy=[(path_line_coord[currDatapointIndex+1][0] - 5, path_line_coord[currDatapointIndex+1][1] - 5),
                      (path_line_coord[currDatapointIndex+1][0] + 5, path_line_coord[currDatapointIndex+1][1] + 5)],
                  fill=(255, 0, 0), outline=(255, 255, 255), width=2)
-def opencv_test(start_frame, gpx_item):
+def opencv_test(start_frame, gpx_path, style_path, video_path, output_path):
+    canvas = CanvasClass.Canvas(video_path, style_path, gpx_path)
+
+
     cap = cv2.VideoCapture(video_path)
     fps = cap.get(cv2.CAP_PROP_FPS)
     interval_in_fps = gpx_item.datapoint_interval * fps
@@ -164,9 +168,9 @@ gpx_item = GPXClass.GPXClass("FNS_Ride.gpx")
 
 video_start_time = "00:26"  # Desired target time in mm:ss format
 
-start_frame = GPXUtil.GPXUtils.find_frame_for_time_in_video(video_path, video_start_time)
+start_frame = GPXUtil.GPXUtils.find_frame_for_time_in_video('./Video/testing_video.mp4', video_start_time)
 start_time = time.time()
-opencv_test(start_frame, gpx_item)
+opencv_test(start_frame, 'FNS_Ride.gpx', './Style/default.xml', './Video/testing_video.mp4', './Video/output_video.mp4')
 end_time = time.time()
 elapsed_time = end_time - start_time
 print('Time used:', elapsed_time, 'seconds')
