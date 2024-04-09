@@ -3,7 +3,7 @@ from PIL import Image, ImageFont, ImageDraw
 
 from Widgets.WidgetClass import WidgetBase
 
-class HeartrateWidget(WidgetBase):
+class ElevationWidget(WidgetBase):
     graph = None
     def drawFrame(self):
         # Implement the draw method according to your specific requirements
@@ -18,7 +18,7 @@ class HeartrateWidget(WidgetBase):
             textMarginLeft = graph[5]
         currDatapointIndex = self.canvas_object.datapointIndex
         # Example implementation:
-        print("drawing widget Heartrate...")
+        print("drawing widget Elevation...")
         text_dim_max = self.draw.textbbox((0, 0), elevationTextMax, font=elevationFont)
         text_dim_min = self.draw.textbbox((0, 0), elevationTextMin, font=elevationFont)
         self.draw.polygon(path_line_coord, fill=(60, 231, 77, 162), width=2)
