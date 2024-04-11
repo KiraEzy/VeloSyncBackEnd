@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style>
+	<theme key="0">
+		<item theme="0">
+			<widget name="text">
+			    <font>arial</font>
+                <size>12</size>
+                <color>0</color>
+                <align>0</align>
+                <bold>0</bold>
+                <italic>0</italic>
+            </widget>
+            <widget name="graph">
+                <color>0</color>
+                <line>1</line>
+                <fill>0</fill>
+                <lineWidth>1</lineWidth>
+            </widget>
+		</item>
+	</display>
+</style>
