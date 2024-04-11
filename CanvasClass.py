@@ -6,16 +6,16 @@ import numpy as np
 from PIL import Image, ImageFont, ImageDraw
 import cv2
 import GPXUtil
-import StyleWidget
+import LayoutStyle
 from GPXClass import GPXClass
 
 
 class Canvas:
-    def __init__(self, video_path, style_path, gpx_path, output_path, start_frame):
+    def __init__(self, video_path, layout_path, gpx_path, output_path, start_frame):
         self.gpx_object = GPXClass(gpx_path)
-        self.style = StyleWidget.Style(style_path, self)
+        self.style = LayoutStyle.LayoutStyle(layout_path, self)
         self.video = video_path
-        self.widget_list = self.style.styleFileToWidgetList()
+        self.widget_list = self.style.layoutFileToWidgetList()
         self.output_path = output_path
         self.start_frame = start_frame
 
